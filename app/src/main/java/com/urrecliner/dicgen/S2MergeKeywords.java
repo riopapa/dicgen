@@ -16,9 +16,7 @@ import java.util.List;
 public class S2MergeKeywords {
 
     /*
-    *   dic2_sorted 를 읽어 같은 단어 별로 bible, chapter, verse array file 을 만듬
-    *   keyRef.json 에도 기록
-     */
+    *   make json file from keywords array     */
     ;
     List<MainActivity.KeyRef> keyRefs;
     List<MainActivity.bcv> bcvs;
@@ -47,17 +45,6 @@ public class S2MergeKeywords {
 
         keyRefs.add(new MainActivity.KeyRef(sKey, bcvs));
         Log.w("merge ","merge complete "+ keyRefs.size());
-
-//        for (int j = 0; j < keyRefs.size(); j++) {
-//            MainActivity.KeyRef mg = keyRefs.get(j);
-//            String s = mg.key + ";";
-//            for (int k = 0; k < mg.bcvs.size(); k++) {
-//                MainActivity.bcv bv = mg.bcvs.get(k);
-//                s += bv.b +","+bv.c +","+bv.v +";";
-//            }
-//            MainActivity.append2File(mergedFile, s);
-//        }
-//        Log.w("merge"," mergedFile complete");
         boolean none = jsonFile.delete();
         Gson gson = new Gson();
         String json = gson.toJson(keyRefs);

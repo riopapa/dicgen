@@ -22,11 +22,11 @@ import java.util.List;
 public class S8XrossCheck {
 
     /*
-    *   keyRefs와 dict folder file 명을 비교하여 빠진 것에 대해 log 추출
+    *   verify dict folder against keyRefs json
      */
     List<MainActivity.KeyRef> keyRefs;
-    List<String> xrossKey;
-    List<Integer> xrossCnt;
+    List<String> refKey;
+    List<Integer> refCnt;
     File[] dicList;
     String[] dictNames;
 
@@ -34,11 +34,11 @@ public class S8XrossCheck {
 
         Log.w("xross","Xross start");
         readKeyRef(jsonFile);
-        xrossKey = new ArrayList<>();
-        xrossCnt = new ArrayList<>();
+        refKey = new ArrayList<>();
+        refCnt = new ArrayList<>();
         for (int i = 0; i < keyRefs.size(); i++) {
-            xrossKey.add(keyRefs.get(i).key);
-            xrossCnt.add(0);
+            refKey.add(keyRefs.get(i).key);
+            refCnt.add(0);
         }
 
         dicList = dicFolder.listFiles((dir, name) ->
@@ -52,20 +52,18 @@ public class S8XrossCheck {
         }
         Arrays.sort(dictNames);
 
-        for (int i = 0; i < dictNames.length; i++) {
-            String s = dictNames[i];
-            int idx = Collections.binarySearch(xrossKey, s);
+        for (String s : dictNames) {
+            int idx = Collections.binarySearch(refKey, s);
             if (idx < 0) {
                 Log.w("xross", "not reffered dic.txt " + s);
-            }
-            else
-                xrossCnt.set(idx,xrossCnt.get(idx)+1);
+            } else
+                refCnt.set(idx, refCnt.get(idx) + 1);
         }
-        Log.w("xross","");
-        Log.w("xross"," Check merged");
-        for (int i = 0; i < xrossKey.size(); i++) {
-            if (xrossCnt.get(i) == 0) {
-                Log.w("xross","error "+xrossKey.get(i));
+        Log.w("check","");
+        Log.w("check"," Check merged");
+        for (int i = 0; i < refKey.size(); i++) {
+            if (refCnt.get(i) == 0) {
+                Log.w("check","error "+ refKey.get(i));
             }
         }
     }

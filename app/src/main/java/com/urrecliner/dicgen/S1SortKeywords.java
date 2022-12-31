@@ -15,8 +15,7 @@ import java.util.List;
 public class S1SortKeywords {
 
     /*
-    * dic1_extracted resource를 읽어 dic2_sorted 에 sort하여 기록
-    * sort가 제대로 되게 단어 뒤에 blank 한 칸 추가 함
+    * sort extracted array into keywords
      */
     List<MainActivity.Keyword> keywords;
 
