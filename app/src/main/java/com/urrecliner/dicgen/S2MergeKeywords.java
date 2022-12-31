@@ -15,12 +15,14 @@ import java.util.List;
 
 public class S2MergeKeywords {
 
+    /*
+    *   dic2_sorted 를 읽어 같은 단어 별로 bible, chapter, verse array file 을 만듬
+    *   keyRef.json 에도 기록
+     */
     List<MainActivity.Keyword> keywords;
     List<MainActivity.KeyRef> keyRefs;
     List<MainActivity.bcv> bcvs;
 
-    // dic2_sorted 에서 같은 키는 장절을 합해서 하나로 합쳐 dic3_merged.txt 로
-    // 또 keyRef.json 으로 write
     void merge(Context context, File mergedFile, File jsonFile) {
         boolean none = mergedFile.delete();
         keywords = new ArrayList<>();

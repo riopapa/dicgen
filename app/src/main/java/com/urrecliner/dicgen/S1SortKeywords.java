@@ -14,10 +14,12 @@ import java.util.List;
 
 public class S1SortKeywords {
 
+    /*
+    * dic1_extracted resource를 읽어 dic2_sorted 에 sort하여 기록
+    * sort가 제대로 되게 단어 뒤에 blank 한 칸 추가 함
+     */
     List<MainActivity.Keyword> keywords;
 
-    // dic_index.txt file을 dic1_index.txt 로 copy 후 실행
-    // dic1_index를 sort 해서 dic2_sorted 로
     public void sort(Context context, File sortedFile) {
         boolean none = sortedFile.delete();
         keywords = new ArrayList<>();
@@ -43,11 +45,10 @@ public class S1SortKeywords {
         }
         Log.w("sort","read complete");
         keywords.sort(Comparator.comparing(obj -> (obj.str)));
-        Log.w("sort","keywords sorted");
+        Log.w("sort","keywords sorted "+keywords.size());
         for (int j = 0; j < keywords.size(); j++) {
             MainActivity.append2File(sortedFile, keywords.get(j).str);
         }
-        keywords.clear();
         Log.w("all ","sorted write complete "+keywords.size());
     }
 

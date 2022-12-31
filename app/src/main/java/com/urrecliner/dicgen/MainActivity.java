@@ -31,7 +31,6 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
-//import org.apache.commons.io.FileUtils;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -127,7 +126,6 @@ public class MainActivity extends AppCompatActivity {
 //            dictNames[i] = dic.substring(0, dic.length()-4);
 //        }
 //        Arrays.sort(dictNames);
-
 
 //        new S0ExtractKeyword().extract(getApplicationContext(), extractFile);
 //        new S1SortKeywords().sort(getApplicationContext(), sortedFile);

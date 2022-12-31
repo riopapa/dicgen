@@ -11,7 +11,6 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
 import java.lang.reflect.Type;
@@ -22,13 +21,15 @@ import java.util.List;
 
 public class S8XrossCheck {
 
+    /*
+    *   keyRefs와 dict folder file 명을 비교하여 빠진 것에 대해 log 추출
+     */
     List<MainActivity.KeyRef> keyRefs;
     List<String> xrossKey;
     List<Integer> xrossCnt;
     File[] dicList;
     String[] dictNames;
 
-    // dict 의 .txt 파일을 읽고, merged와 비교
     void check(Context context, File dicFolder, File jsonFile) {
 
         Log.w("xross","Xross start");

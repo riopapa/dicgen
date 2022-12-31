@@ -10,6 +10,11 @@ import java.io.InputStreamReader;
 
 public class S0ExtractKeyword {
 
+    /*
+    *   dic0_bible 로부터 [_사전_] 데이터를 추출해서 dic1_extracted.txt 로 추출
+    *   작업된 text file로 부터 dic1_extracted.txt 로 복사되어야 함
+     */
+
     int count;
     File keyFile;
 
