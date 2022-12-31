@@ -34,7 +34,7 @@ import java.util.TimerTask;
 
 public class MainActivity extends AppCompatActivity {
 
-    File outFolder, dicFolder, extractFile, sortedFile, mergedFile, jsonFile, bibFolder;
+    File outFolder, dicFolder, jsonFile, bibFolder;
     int count;
     Timer timer;
     TimerTask timerTask;
@@ -113,19 +113,8 @@ public class MainActivity extends AppCompatActivity {
             showDictNext(-1);
         });
 
-//        dicList = dicFolder.listFiles((dir, name) ->
-//                (name.endsWith("txt")));
-//
-//        Log.w("xross", "Dic files "+dicList.length);
-//        dictNames = new String[dicList.length];
-//        for (int i = 0; i < dicList.length; i++) {
-//            String dic = dicList[i].getName();
-//            dictNames[i] = dic.substring(0, dic.length()-4);
-//        }
-//        Arrays.sort(dictNames);
-
         List<String> extracted =
-        new S0ExtractKeyword().extract(getApplicationContext(), extractFile);
+        new S0ExtractKeyword().extract(getApplicationContext());
         List<Keyword> keywords =
         new S1SortKeywords().sort(extracted);
         new S2MergeKeywords().merge(keywords, jsonFile);

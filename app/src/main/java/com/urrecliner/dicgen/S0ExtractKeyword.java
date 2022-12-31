@@ -4,7 +4,6 @@ import android.content.Context;
 import android.util.Log;
 
 import java.io.BufferedReader;
-import java.io.File;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
@@ -17,12 +16,10 @@ public class S0ExtractKeyword {
      */
 
     int count;
-    File keyFile;
     List<String> extracted = new ArrayList<>();
 
-    public List<String> extract(Context context, File kf) {
+    public List<String> extract(Context context) {
 
-        this.keyFile = kf;
 //        46  14:23 그러므로 온 [_교회_]가 함께 모여 다 방언으로 말하면 알지 못하는 자들이나 믿지 아니하는 자들이 들어와서 너희를 미쳤다 하지 아니하겠느냐[_$44#2:13_]
         boolean none = keyFile.delete();
 
