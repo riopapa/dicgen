@@ -29,17 +29,18 @@ public class S2MergeKeywords {
         for (int i = 0; i < keywords.size(); i++) {
             String [] ss = keywords.get(i).str.split(",");
             String nowKey = ss[0].trim();
+            int b = Integer.parseInt(ss[1])-100;
+            int c = Integer.parseInt(ss[2])-100;
+            int v = Integer.parseInt(ss[3])-100;
             if (sKey.equals(nowKey)) {
-                bcvs.add(new MainActivity.bcv(Integer.parseInt(ss[1]),
-                        Integer.parseInt(ss[2]), Integer.parseInt(ss[3])));
+                bcvs.add(new MainActivity.bcv(b,c,v));
             } else {
                 if (!sKey.equals("x")) {
                     keyRefs.add (new MainActivity.KeyRef(sKey, bcvs));
                 }
                 sKey = nowKey;
                 bcvs = new ArrayList<>();
-                bcvs.add(new MainActivity.bcv(Integer.parseInt(ss[1]),
-                        Integer.parseInt(ss[2]), Integer.parseInt(ss[3])));
+                bcvs.add(new MainActivity.bcv(b,c,v));
             }
         }
 

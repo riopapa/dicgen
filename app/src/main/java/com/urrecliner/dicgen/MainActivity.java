@@ -97,10 +97,7 @@ public class MainActivity extends AppCompatActivity {
         }
         dicFolder = new File(Environment.getExternalStorageDirectory(), "download/dict");
         bibFolder = new File(Environment.getExternalStorageDirectory(), "download/bible");
-        extractFile = new File(outFolder,"dic1_extracted.txt");
-        sortedFile = new File(outFolder, "dic2_sorted.txt");
-        mergedFile = new File(outFolder, "dic3_merged.txt");
-        jsonFile = new File(outFolder, "keyRef.json");
+        jsonFile = new File(dicFolder, "keyRef.json");
 
         edDicKey = findViewById(R.id.dictKey);
         tvGo = findViewById(R.id.gogo);
@@ -126,6 +123,7 @@ public class MainActivity extends AppCompatActivity {
 //            dictNames[i] = dic.substring(0, dic.length()-4);
 //        }
 //        Arrays.sort(dictNames);
+
         List<String> extracted =
         new S0ExtractKeyword().extract(getApplicationContext(), extractFile);
         List<Keyword> keywords =
