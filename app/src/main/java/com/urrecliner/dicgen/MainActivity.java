@@ -126,10 +126,11 @@ public class MainActivity extends AppCompatActivity {
 //            dictNames[i] = dic.substring(0, dic.length()-4);
 //        }
 //        Arrays.sort(dictNames);
-
-//        new S0ExtractKeyword().extract(getApplicationContext(), extractFile);
-//        new S1SortKeywords().sort(getApplicationContext(), sortedFile);
-//        new S2MergeKeywords().merge(getApplicationContext(), mergedFile, jsonFile);
+        List<String> extracted =
+        new S0ExtractKeyword().extract(getApplicationContext(), extractFile);
+        List<Keyword> keywords =
+        new S1SortKeywords().sort(extracted);
+        new S2MergeKeywords().merge(keywords, jsonFile);
         new S8XrossCheck().check(getApplicationContext(), dicFolder, jsonFile);
 //        new MakeBible().make(getApplicationContext(), bibFolder);
     }

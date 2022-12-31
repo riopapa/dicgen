@@ -20,36 +20,20 @@ public class S1SortKeywords {
      */
     List<MainActivity.Keyword> keywords;
 
-    public void sort(Context context, File sortedFile) {
-        boolean none = sortedFile.delete();
+    List<MainActivity.Keyword>  sort(List<String> extracted) {
+        Log.w("sort ","sort started "+ extracted.size());
         keywords = new ArrayList<>();
-        int i = 0;
-        Log.w("sort","sort start");
-        InputStream inputStream = context.getResources().openRawResource(R.raw.dic1_extracted);        BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
-        String line = null;
-        try {
-            line = reader.readLine();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        while (line != null && line.length() > 5) {
-            i++;
-            String [] s = line.split(",");  // add blank after keyword for sort properly
+        for (int i = 0; i < extracted.size(); i++) {
+            String [] s = extracted.get(i).split(",");
             keywords.add(new MainActivity.Keyword(s[0]+" ,"+s[1]+","+s[2]+","+s[3]));
-            try {
-                line = reader.readLine();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
         }
-        Log.w("sort","read complete");
         keywords.sort(Comparator.comparing(obj -> (obj.str)));
-        Log.w("sort","keywords sorted "+keywords.size());
-        for (int j = 0; j < keywords.size(); j++) {
-            MainActivity.append2File(sortedFile, keywords.get(j).str);
-        }
-        Log.w("all ","sorted write complete "+keywords.size());
+//        Log.w("sort","keywords sorted "+keywords.size());
+//        for (int j = 0; j < keywords.size(); j++) {
+//            MainActivity.append2File(sortedFile, keywords.get(j).str);
+//        }
+        Log.w("sort ","sorted write complete "+keywords.size());
+        return keywords;
     }
 
 }

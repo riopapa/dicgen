@@ -7,6 +7,8 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.List;
 
 public class S0ExtractKeyword {
 
@@ -17,13 +19,14 @@ public class S0ExtractKeyword {
 
     int count;
     File keyFile;
+    List<String> extracted = new ArrayList<>();
 
-    // 인터넷 성경에서 키로 설정된 것 들 뽑아서 dic1_index 로
-    public void extract(Context context, File kf) {
+    public List<String> extract(Context context, File kf) {
 
         this.keyFile = kf;
 //        46  14:23 그러므로 온 [_교회_]가 함께 모여 다 방언으로 말하면 알지 못하는 자들이나 믿지 아니하는 자들이 들어와서 너희를 미쳤다 하지 아니하겠느냐[_$44#2:13_]
         boolean none = keyFile.delete();
+
 
         BufferedReader bfRead = new BufferedReader(new InputStreamReader(context.getResources().openRawResource(R.raw.dic0_bible)));
         count = 0;
@@ -36,7 +39,8 @@ public class S0ExtractKeyword {
             }
             extract_Keyword(line);
         }
-        Log.w("extract","completed "+count);
+        Log.w("extract","completed extracted() = "+extracted.size());
+        return extracted;
     }
 
     void extract_Keyword(String line) {
@@ -71,7 +75,8 @@ public class S0ExtractKeyword {
                 if (!keyword.startsWith("$")) {
                     String keyResult = keyword + bibleStr;
 //                Log.w("key", keyResult);
-                    MainActivity.append2File(keyFile, keyResult);
+//                    MainActivity.append2File(keyFile, keyResult);
+                    extracted.add(keyResult);
                     count++;
                 }
             } catch (Exception e) {
