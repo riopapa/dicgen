@@ -34,15 +34,14 @@ import java.util.TimerTask;
 
 public class MainActivity extends AppCompatActivity {
 
-    File outFolder, dicFolder, jsonFile, bibFolder;
+    File dicFolder, jsonFile, bibFolder;
     int count;
     Timer timer;
     TimerTask timerTask;
     TextView tvGo, tvNext, tvPrev;
     static EditText edDicKey;
     Activity activity;
-
-    File[] dicList;
+    final String deli = "¶";
     String[] dictNames;
 
     static class Keyword {
@@ -86,15 +85,6 @@ public class MainActivity extends AppCompatActivity {
             }
         }
         setContentView(R.layout.activity_main);
-        outFolder = new File(Environment.getExternalStorageDirectory(), "download/dicKey");
-        if (!outFolder.exists()) {
-            try {
-                //noinspection ResultOfMethodCallIgnored
-                outFolder.mkdirs();
-            } catch (Exception e) {
-                Log.e("Package Folder", outFolder.toString() + "_" + e);
-            }
-        }
         dicFolder = new File(Environment.getExternalStorageDirectory(), "download/dict");
         bibFolder = new File(Environment.getExternalStorageDirectory(), "download/bible");
         jsonFile = new File(dicFolder, "keyRef.json");
@@ -113,11 +103,11 @@ public class MainActivity extends AppCompatActivity {
             showDictNext(-1);
         });
 
-        List<String> extracted =
-        new S0ExtractKeyword().extract(getApplicationContext());
-        List<Keyword> keywords =
-        new S1SortKeywords().sort(extracted);
-        new S2MergeKeywords().merge(keywords, jsonFile);
+//        List<String> extracted =
+//        new S0ExtractKeyword().extract(getApplicationContext());
+//        List<Keyword> keywords =
+//        new S1SortKeywords().sort(extracted);
+//        new S2MergeKeywords().merge(keywords, jsonFile);
         new S8XrossCheck().check(getApplicationContext(), dicFolder, jsonFile);
 //        new MakeBible().make(getApplicationContext(), bibFolder);
     }
