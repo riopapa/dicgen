@@ -1,6 +1,5 @@
 package com.urrecliner.dicgen;
 
-import android.content.Context;
 import android.util.Log;
 
 import com.google.gson.Gson;
@@ -30,8 +29,9 @@ public class S8XrossCheck {
     File[] dicList;
     String[] dictNames;
 
-    void check(Context context, File dicFolder, File jsonFile) {
+    void check(File dicFolder, File jsonFile) {
 
+        FileRead fileRead = new FileRead(dicFolder);
         Log.w("xross","Xross start");
         readKeyRef(jsonFile);
         refKey = new ArrayList<>();
@@ -51,7 +51,14 @@ public class S8XrossCheck {
             dictNames[i] = dic.substring(0, dic.length()-4);
         }
         Arrays.sort(dictNames);
-
+        for (String s : dictNames) {
+            String [] lines = fileRead.readBibleFile(s+".txt", true);
+            if (!lines[0].startsWith("~"))
+                Log.w(s, lines[0]);
+            if (lines.length < 3)
+                Log.w(s+" short", lines[0]);
+        }
+        dictNames[6000] = "x";
         for (String s : dictNames) {
             int idx = Collections.binarySearch(refKey, s);
             if (idx < 0) {

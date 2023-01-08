@@ -1,23 +1,19 @@
 package com.urrecliner.dicgen;
 
-import android.content.Context;
 import android.util.Log;
 
 import com.google.gson.Gson;
 
-import java.io.BufferedReader;
 import java.io.File;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 
 public class S2MergeKeywords {
 
     /*
-    *   make json file from keywords array     */
-    ;
+    *   make json file from keywords array
+    */
+
     List<MainActivity.KeyRef> keyRefs;
     List<MainActivity.bcv> bcvs;
 

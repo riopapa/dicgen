@@ -4,7 +4,6 @@ import android.content.Context;
 import android.util.Log;
 
 import java.io.BufferedReader;
-import java.io.File;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
@@ -40,7 +39,7 @@ public class S0ExtractKeyword {
 
     void extract_Keyword(String line) {
 //        Log.w("src",line);
-        int pos1 = -1, pos2;
+        int pos1, pos2;
         if (line.contains("bib"))
             Log.w("Extract", line);
         if (!line.contains("[_"))

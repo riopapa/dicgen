@@ -113,9 +113,9 @@ public class MainActivity extends AppCompatActivity {
 //        List<Keyword> keywords =
 //        new S1SortKeywords().sort(extracted);
 //        new S2MergeKeywords().merge(keywords, jsonFile);
-//        new S8XrossCheck().check(getApplicationContext(), dicFolder, jsonFile);
+        new S8XrossCheck().check(dicFolder, jsonFile);
 //        new MakeBible().make(getApplicationContext(), bibFolder);
-        new MakeRef().make(getApplicationContext(), refFolder, shortBibleNames);
+//        new MakeRef().make(getApplicationContext(), refFolder, shortBibleNames);
     }
 
     private void showDictContents() {
